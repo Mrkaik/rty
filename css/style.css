@@ -1,0 +1,259 @@
+/* Remover margens de todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+/* Estilo para o header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #131194, #35a3a3);
+    padding: 5px;
+    position: relative; /* Adicionando posição relativa */
+}
+
+/* Estilo para a logo e o menu */
+nav.logo, nav.menu {
+    flex: 1;
+}
+
+/* Estilo para a imagem dentro da logo */
+nav.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Estilo para o contêiner do menu */
+.menu-container {
+    display: flex;
+    font-size: 30px;
+}
+
+/* Estilo para a lista de menu */
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+/* Estilo para os itens do menu */
+nav.menu li {
+    margin-right: 10px;
+}
+
+/* Estilo para os links do menu */
+nav.menu li a {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 25px;
+}
+
+/* Efeito ao passar o mouse */
+nav.menu li a:hover {
+    transform: scale(1.1);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+/* Estilo para o conteúdo */
+.content {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/fundo.jpeg'); /* Corrigindo a URL da imagem */
+    background-size: cover;
+    background-position: center;
+}
+
+
+.content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content h1 {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 48px;
+    text-align: center;
+}
+
+/* Estilo para a janela do vídeo */
+.video-window {
+    display: none; /* Inicialmente escondido */
+    margin-left: 200px; /* Largura do painel lateral + margem */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#tutorial-video {
+    width: 100%;
+    height: auto;
+    outline: none;
+}
+
+/* Rodapé */
+footer {
+    background-image: linear-gradient(to bottom, #131194, #35a3a3);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    text-align: center;
+}
+
+/* Efeito de flutuação para o ícone */
+.whatsapp-float {
+    position: fixed;
+    bottom: 9px;
+    left: 40px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de hover para a flutuação */
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para a animação de carregamento */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: 9999;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+/* Animação para aparecer gradualmente */
+@keyframes fadeIn {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Estilos para esconder o conteúdo durante a animação de carregamento */
+body.loading {
+    overflow: hidden;
+}
+
+/* Estilo para o conteúdo depois que a página é carregada */
+body.loaded .content {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.floating-button:hover .tooltip {
+    display: block;
+}
+
+/* Estilos para telas menores que 768px (tamanhos de celular) */
+@media screen and (max-width: 768px) {
+    .menu-container ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        text-align: right;
+        padding: 10px;
+    }
+
+    .menu-toggle:before {
+        content: "\2630";
+        font-size: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.active:before {
+        transform: rotate(90deg);
+    }
+
+    .menu-toggle.active + .menu-container ul {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .center-button {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #3498db;
+        color: #fff;
+        padding: 15px 30px;
+        font-size: 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 999; /* Garante que o botão esteja acima de outros elementos */
+    }
+}
